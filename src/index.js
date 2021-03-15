@@ -29,7 +29,7 @@ const numbers = {
 }
 
 module.exports = function toReadable (number) {
-    const num = (number + '').split('') 
+    const num = (number + '').split('')
     if (number === 0) {
         return 'zero'
     }else if (numbers[number]) {
@@ -38,9 +38,9 @@ module.exports = function toReadable (number) {
         return `${getTwoBitNumber(num)}`
     } else if (num.length < 4) {
         if (num[1] === '0' && num[2] === '0') {
-            return `${toReadable(num[0])} hundred`
+            return `${numbers[num[0]]} hundred`
         } else {
-            return `${toReadable(num[0])} hundred ${getTwoBitNumber(num[1] + num[2])}`
+            return `${numbers[num[0]]} hundred ${getTwoBitNumber(num[1] + num[2])}`
         }
     }
 }
@@ -52,7 +52,7 @@ function getTwoBitNumber(num) {
         if (num[0] === '0') {
           return numbers[num[1]]
         } else {
-          return`${getTwoBitNumber(num[0] + '0')} ${getTwoBitNumber(num[1])}`
+          return`${numbers[num[0] + '0']} ${numbers[num[1]]}`
         }
       }
   }
